@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Card Information</title>
+</head>
+<body>
+	<div align="center">
+		<h1>Avilable Cards List</h1>
+		
+		<div sec:authorize="isAuthenticated()">
+			Welcome <b><span sec:authentication="name">Username</span></b> &nbsp;
+			<i><span sec:authentication="principal.authorities">Roles</span></i>
+		</div>
+		
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Logout" />
+		</form>
+		
+		<div>
+		<a href="/new">Add Card</a></br>
+		<a href="/newuser">Add User</a>
+		</div>
+
+		<form th:action="@{/search}" th:object="${card}">
+			Search By Card Number: <input type="text" name="number" id="number" size="50"
+				th:field="*{number}" required /> &nbsp; <input type="submit"
+				value="Search" /> 
+		</form>
+
+		<table border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>Holder Name</th>
+					<th>Number</th>
+					<th>Expiry Date</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="card : ${listCards}">
+					<td th:text="${card.holderName}">holderName</td>
+					<td th:text="${card.number}">number</td>
+					<td th:text="${card.expiryDate}">expiryDate</td>
+
+					<td th:if="${card.createdBy == currentUser}">
+						<div th:if="${card.createdBy == currentUser}">
+							<a th:href="@{'/edit/' + ${card.id}}">Edit</a>
+						</div> &nbsp;&nbsp;&nbsp;
+
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

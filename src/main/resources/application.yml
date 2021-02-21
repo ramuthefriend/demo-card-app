@@ -1,0 +1,107 @@
+spring:
+  application:
+    name: "demo-card-app"
+  profiles:
+    active: default
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/testdb
+    username: ram
+    password: ram
+    driverClassName: org.postgresql.Driver    
+    
+server:
+  servlet:
+    contextPath: /
+  port: 8080
+   
+---
+
+spring:
+  profiles: default
+
+logging:
+  level:
+    root: ERROR
+    org.springframework.web: ERROR
+    com.app.card: DEBUG
+    org.hibernate: ERROR  
+  
+       
+---
+
+spring:
+  profiles: development
+
+logging:
+  level:
+    root: ERROR
+    org.springframework.web: ERROR
+    com.app.card: DEBUG
+    org.hibernate: ERROR  
+
+     
+---
+ 
+spring:
+  profiles: test
+
+logging:
+  level:
+    root: ERROR
+    org.springframework.web: ERROR
+    com.app.card: DEBUG
+    org.hibernate: ERROR
+---
+
+spring:
+  profiles: bau_sit
+  
+logging:
+  level:
+    root: ERROR
+    org.springframework.web: ERROR
+    com.app.card: DEBUG
+    org.hibernate: ERROR  
+    
+---
+
+spring:
+  profiles: sit
+  
+logging:
+  level:
+    root: ERROR
+    org.springframework.web: ERROR
+    com.app.card: DEBUG
+    org.hibernate: ERROR  
+    
+---
+
+spring:
+  profiles: preprod
+  
+logging:
+  level:
+    root: ERROR
+    org.springframework.web: ERROR
+    com.app.card: DEBUG
+    org.hibernate: ERROR  
+  
+---   
+    
+
+spring:
+  profiles: prod
+  
+logging:
+  level:
+    root: ERROR
+    org.springframework.web: ERROR
+    com.app.card: DEBUG
+    org.hibernate: ERROR  
