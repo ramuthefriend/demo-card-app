@@ -8,7 +8,7 @@
 		<version>2.3.4.RELEASE</version>
 		<relativePath/> 
 	</parent>
-	<groupId>com.nilesh</groupId>
+	<groupId>com.app.card</groupId>
 	<artifactId>demo-card-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>demo-card-app</name>
